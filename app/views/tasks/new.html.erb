@@ -1,0 +1,33 @@
+<h1>New Task</h1>
+<p>Create a new monthly task and keep track of it.</p>
+<%= link_to 'Back', tasks_path %>
+
+<%= form_for @task do |f| %>
+
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@task.errors.count, "error") %> prohibited
+        this task from being saved:
+      </h2>
+      <ul>
+        <% @task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.text_field :description, placeholder: "Title" %>
+  </p>
+
+    <%= f.hidden_field :completed, :value => false %>
+    <%= f.hidden_field :completed_date, :value => nil %>
+
+  <p>
+    <%= f.submit "Create task" %>
+  </p>
+
+<% end %>
+
