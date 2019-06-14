@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ownership: false
+  user: one
+  task: one
+
+two:
+  ownership: false
+  user: two
+  task: two

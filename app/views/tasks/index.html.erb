@@ -1,12 +1,13 @@
 <h1>Organize your monthly tasks</h1>
 <p>Create and control your monthly tasks to never miss one. You can mark the tasks as completed. If you are reaching end of the month and some task is not complete, we will send you a reminder! Each month the task will automatically get back yo uncompleted.</p>
 <ul>
-  <% @tasks.each do |task| %>
+  <% current_user.assignments.each do |a| %>
+  <% #@tasks.each do |task| %>
     <li>
       <div class="wrapper">
-        <%= task.description %>
-        <input type="checkbox" class="check" value="<%= task.completed %>">
-        <%= link_to 'Delete task', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= a.task.description %>
+        <input type="checkbox" class="check" value="<%= a.task.completed %>">
+        <%= link_to 'Delete task', task_path(a.task), method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
     </li>
   <% end %>

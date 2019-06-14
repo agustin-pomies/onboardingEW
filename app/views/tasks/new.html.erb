@@ -22,8 +22,14 @@
     <%= f.text_field :description, placeholder: "Title" %>
   </p>
 
+    <!-- Campos ocultos para creación de task -->
     <%= f.hidden_field :completed, :value => false %>
     <%= f.hidden_field :completed_date, :value => nil %>
+
+    <!-- Campos ocultos para creación de assignment -->
+    <%= f.fields_for :assignments do |a| %>
+      <%= a.hidden_field :ownership, :value => true %>
+    <% end %>
 
   <p>
     <%= f.submit "Create task" %>

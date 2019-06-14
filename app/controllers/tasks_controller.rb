@@ -11,10 +11,13 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @task.assignments.new
   end
 
   def create
     @task = Task.new(task_params)
+    # @assignment = current_user.assignment.new
+    @task.assignments.first.user_id = current_user.id
 
     if @task.save
       redirect_to tasks_path
@@ -30,11 +33,11 @@ class TasksController < ApplicationController
   end
 
   private
-    def set_user
-      @user = User.find(params[:current_user.id])
+    def task_params
+      params.require(:task).permit(:description, :completed, :completed_date, assignments_attributes: [:ownership])
     end
 
-    def task_params
-      params.require(:task).permit(:description, :completed, :completed_date)
+    def assignment_params
+      params.require(:task).permit(:ownership, :user_id)
     end
 end
