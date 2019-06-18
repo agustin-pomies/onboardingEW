@@ -63,3 +63,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Gem to manipulate user authentication
 gem 'devise'
+
+# Gem to use jquery on rails
+gem 'jquery-rails'

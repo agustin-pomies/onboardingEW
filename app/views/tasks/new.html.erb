@@ -29,6 +29,7 @@
     <!-- Campos ocultos para creación de assignment -->
     <%= f.fields_for :assignments do |a| %>
       <%= a.hidden_field :ownership, :value => true %>
+      <%= a.hidden_field :user_id, :value => current_user.id %>
     <% end %>
 
   <p>
