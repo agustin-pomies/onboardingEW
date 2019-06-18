@@ -1,7 +1,6 @@
 <h1>Organize your monthly tasks</h1>
 <p>Create and control your monthly tasks to never miss one. You can mark the tasks as completed. If you are reaching end of the month and some task is not complete, we will send you a reminder! Each month the task will automatically get back yo uncompleted.</p>
 
-<%= form_tag update_multiple_tasks_path do %>
 <ul>
   <% current_user.assignments.each do |a| %>
   <% #@tasks.each do |task| %>
@@ -13,9 +12,7 @@
       </div>
     </li>
   <% end %>
-  <%= submit_tag 'Update' %>
 </ul>
-<% end %>
 
 <%= link_to 'Create task', new_task_path %>
 <%= link_to 'Log out', destroy_user_session_path, method: :delete %>

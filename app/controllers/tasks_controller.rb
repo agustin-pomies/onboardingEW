@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
+  respond_to :html, :json
 
   def index
     @tasks = Task.all
@@ -31,16 +32,19 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    @task.update_attributes(task_params)
-  end
 
-  def update_multiple
-    @selected = params[:tasks_ids]
+    respond_to do |format|
+      if @task.update(task_params)
+        puts task_params
+        format.html { redirect_to root_path, notice: 'Task completed!' }
+        format.json { redirect_to root_path, notice: 'Task completed!' }
+      else
+        puts task_params
+        format.html { redirect_to root_path, notice: 'Error' }
+        format.json { redirect_to root_path, notice: 'Error' }
+      end
+    end
 
-    Task.all.update_all(completed: false) # completed_date will be overwrite when the task becomes completed
-    Task.where(:id => @selected, :completed => false).update_all(completed: true, completed_date: Time.now)
-
-    redirect_to '/'
   end
 
   def destroy
