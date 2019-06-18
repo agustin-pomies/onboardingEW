@@ -1,10 +1,5 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
-
-$ -> # when DOM Ready
-  stringfy_date = (date) ->
+$ ->
+  stringify_date = (date) ->
     dd = date.getDate()
     mm = date.getMonth() + 1
     yyyy = date.getFullYear()
@@ -14,15 +9,12 @@ $ -> # when DOM Ready
       mm = '0' + mm
     string = yyyy + '-' + mm + '-' + dd
 
-  # Function to return the current date
   current_date = ->
-    stringfy_date(new Date)
+    stringify_date(new Date)
 
-  # Function to return invalid date
   invalid_date = ->
-    stringfy_date(new Date(null))
+    stringify_date(new Date(null))
 
-  # Decides which date is passed to the model depending of the value of a boolean
   choose_date = (bool) ->
     if bool
       date = current_date()

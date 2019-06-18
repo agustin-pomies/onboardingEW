@@ -35,13 +35,9 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update(task_params)
-        puts task_params
-        format.html { redirect_to root_path, notice: 'Task completed!' }
-        format.json { redirect_to root_path, notice: 'Task completed!' }
+        format.any { redirect_to root_path, notice: 'Task completed!' }
       else
-        puts task_params
-        format.html { redirect_to root_path, notice: 'Error' }
-        format.json { redirect_to root_path, notice: 'Error' }
+        format.any { redirect_to root_path, notice: 'Error' }
       end
     end
 
