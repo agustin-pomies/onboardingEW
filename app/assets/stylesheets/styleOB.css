@@ -5,7 +5,7 @@
   src: url(/assets/Montserrat-Medium.ttf) format("truetype");
 }
 
-.btn {
+.btn, input[type=submit] {
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   font-weight: bold;
@@ -13,7 +13,7 @@
   padding: 8px 25px;
 }
 
-.btn.primary {
+.primary {
   background-color: transparent;
   border: 2px solid white;
   letter-spacing: 8px;
@@ -22,7 +22,7 @@
   text-decoration: none;
 }
 
-.btn.secondary {
+.secondary, input[type=submit] {
   background-color: white;
   border: 0px;
   letter-spacing: 2px;
@@ -70,6 +70,19 @@
 .delete-icon {
   color: #e11e1e;
   font-size: 18px;
+}
+
+.field {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.actions {
+  margin-bottom: 15px;
+}
+
+.hidden {
+  display: none;
 }
 
 input[type=text], input[type=email], input[type=password] {
