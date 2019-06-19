@@ -1,0 +1,103 @@
+@import "font-awesome";
+
+@font-face {
+  font-family: "Montserrat";
+  src: url(/assets/Montserrat-Medium.ttf) format("truetype");
+}
+
+.btn {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 25px;
+}
+
+.btn.primary {
+  background-color: transparent;
+  border: 2px solid white;
+  letter-spacing: 8px;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.btn.secondary {
+  background-color: white;
+  border: 0px;
+  letter-spacing: 2px;
+  font-size: 15px;
+  color: #00ADEE;
+}
+
+.modal-background {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.modal {
+  position: absolute;
+  background-color: white;
+  color: #A5CD39;
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  width: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 60px 40px;
+}
+
+.wrapper {
+  background-color: #A5CD39;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  padding: 4px 12px;
+  display: inline-block;
+}
+
+.back-icon {
+  font-size: 18px;
+}
+
+.delete-icon {
+  color: #e11e1e;
+  font-size: 18px;
+}
+
+input[type=text], input[type=email], input[type=password] {
+  font-size: 16px;
+  border: none;
+  padding: 8px 20px;
+  margin-bottom: 0px;
+}
+
+h1, h2, p, a, th, td, form {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-image: url("background.png");
+  background-color: #00ADEE;
+}
+
+ul {
+  margin-bottom: 30px;
+}
+
+li {
+  color: white;
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+}

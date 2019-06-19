@@ -2,13 +2,13 @@
 <p>Create and control your monthly tasks to never miss one. You can mark the tasks as completed. If you are reaching end of the month and some task is not complete, we will send you a reminder! Each month the task will automatically get back to uncompleted.</p>
 
 <h2>Incompleted tasks</h2>
-<ul class="incomplete">
+<ul class='incomplete'>
   <% @tasks.each do |task| %>
     <% if !task.completed %>
       <li>
-        <div class="wrapper" id="<%= task.id %>">
+        <div class='wrapper' id='<%= task.id %>'>
           <%= task.description %>
-          <%= check_box_tag "tasks_ids[]", task.id, task.completed, :class => "check" %>
+          <%= check_box_tag 'tasks_ids[]', task.id, task.completed, :class => 'check' %>
           <%= link_to 'Delete task', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </li>
@@ -17,18 +17,22 @@
 </ul>
 
 <h2>Completed tasks</h2>
-<ul class="complete">
+<ul class='complete'>
   <% @tasks.each do |task| %>
     <% if task.completed %>
       <li>
-        <div class="wrapper">
+        <div class='wrapper'>
           <%= task.description %>
-          <%= check_box_tag "tasks_ids[]", task.id, task.completed, :class => "check" %>
-          <%= link_to 'Delete task', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= check_box_tag 'tasks_ids[]', task.id, task.completed, class: = 'check' %>
+          <%= link_to task_path(a.task), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class='delete'>
+              <%= fa_icon 'trash' %>
+            </span>
+          <% end %>
           <% if Date.current - task.completed_date == 0 %>
             (Completed today!)
           <% else %>
-            (Completed <%= pluralize((Date.current - task.completed_date).to_i, "day") %> ago)
+            (Completed <%= pluralize((Date.current - task.completed_date).to_i, 'day') %> ago)
           <% end %>
         </div>
       </li>
@@ -36,10 +40,11 @@
   <% end %>
 </ul>
 
-<%= link_to 'Create task', new_task_path %>
-<%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+<%= link_to 'Create task', new_task_path, class: = 'btn primary' %>
+<%= link_to 'Log out', destroy_user_session_path, method: :delete, class: = 'btn primary' %>
 
-<div class="modal-background hidden">
-  <div class="modal">Congratulations!</div>
+<div class='modal-background hidden'>
+  <div class='modal'>Congratulations!</div>
 </div>
+
 

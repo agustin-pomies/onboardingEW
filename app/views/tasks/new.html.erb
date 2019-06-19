@@ -1,13 +1,12 @@
 <h1>New Task</h1>
 <p>Create a new monthly task and keep track of it.</p>
-<%= link_to 'Back', tasks_path %>
 
 <%= form_for @task do |f| %>
 
   <% if @task.errors.any? %>
-    <div id="error_explanation">
+    <div id='error_explanation'>
       <h2>
-        <%= pluralize(@task.errors.count, "error") %> prohibited
+        <%= pluralize(@task.errors.count, 'error') %> prohibited
         this task from being saved:
       </h2>
       <ul>
@@ -19,7 +18,7 @@
   <% end %>
 
   <p>
-    <%= f.text_field :description, placeholder: "Title" %>
+    <%= f.text_field :description, placeholder: 'Title', class: = 'text' %>
   </p>
 
     <!-- Campos ocultos para creación de task -->
@@ -33,8 +32,15 @@
     <% end %>
 
   <p>
-    <%= f.submit "Create task" %>
+    <%= f.submit 'Create task', class: = 'btn secondary' %>
   </p>
 
+<% end %>
+
+<%= link_to tasks_path do %>
+  <span class='back-icon'>
+    <%= fa_icon 'arrow-circle-left' %>
+    Back to my monthly-task's list
+  </span>
 <% end %>
 
