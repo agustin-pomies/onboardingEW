@@ -61,8 +61,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# Gem to manipulate user authentication - version 4.6.2
-gem 'devise'
+# Gem to manipulate user authentication
+gem 'devise', '4.6.2'
 
-# Gem to use jquery on rails - version 4.3.5
-gem 'jquery-rails'
+# Gem to use jquery on rails
+gem 'jquery-rails', '4.3.5'
