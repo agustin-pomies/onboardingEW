@@ -10,7 +10,7 @@
           <%= task.description %>
           <%= check_box_tag 'tasks_ids[]', task.id, task.completed, :class => 'check' %>
           <%= link_to task_path(a.task), method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <span class="delete">
+            <span class='delete'>
               <%= fa_icon 'trash' %>
             </span>
           <% end %>
