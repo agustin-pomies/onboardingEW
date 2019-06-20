@@ -9,6 +9,7 @@
         <div class="wrapper" id="<%= task.id %>">
           <%= task.description %>
           <%= check_box_tag "tasks_ids[]", task.id, task.completed, :class => "check" %>
+          <%= link_to '+', task_path(task), method: :get %>
           <%= link_to 'Delete task', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </li>
