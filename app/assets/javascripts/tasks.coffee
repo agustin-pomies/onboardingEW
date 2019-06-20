@@ -22,30 +22,30 @@ $ ->
       date = invalid_date()
 
   wake_modal = ->
-    $('.modal-background')[0].style.display = 'block'
+    $('.modal-background').removeClass('hidden')
 
   sleep_modal = ->
-    $('.modal-background')[0].style.display = 'none'
+    $('.modal-background').addClass('hidden')
 
-  change_position = (obj, bool) ->
-    if bool
+  change_position = (obj, checked) ->
+    if checked
       previous_list = '.incomplete'
       new_list = '.complete'
     else
       previous_list = '.complete'
       new_list = '.incomplete'
 
-    wrapper = obj.parentElement
-    list_item = obj.parentElement.parentElement
+    wrapper = $(obj).parent()
+    list_item = $(obj).parent().parent()
 
-    list_item.remove()
-    $(new_list)[0].appendChild(list_item)
+    list_item.detach()
+    $(new_list).append(list_item)
 
-    if bool
-      text = document.createTextNode("(Completed today!)")
-      wrapper.appendChild(text)
+    if checked
+      text = document.createTextNode(' (Completed today!)')
+      wrapper.append(text)
     else
-      wrapper.childNodes[4].remove()
+      $(obj).parent().contents().last().remove()
 
   # Disappear modal when it's clicked
   $('.modal-background').on 'click', ->

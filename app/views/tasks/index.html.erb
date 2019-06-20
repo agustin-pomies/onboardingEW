@@ -28,7 +28,7 @@
           <% if Date.current - task.completed_date == 0 %>
             (Completed today!)
           <% else %>
-            (Completed <%= (Date.current - task.completed_date).to_i %> days ago)
+            (Completed <%= pluralize((Date.current - task.completed_date).to_i, "day") %> ago)
           <% end %>
         </div>
       </li>
@@ -39,7 +39,7 @@
 <%= link_to 'Create task', new_task_path %>
 <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
 
-<div class="modal-background">
+<div class="modal-background hidden">
   <div class="modal">Congratulations!</div>
 </div>
 
