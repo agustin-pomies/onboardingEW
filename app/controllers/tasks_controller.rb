@@ -1,8 +1,14 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
 
+  def restart
+    @completed = Task.where('completed_date < ?', Date.current.at_beginning_of_month)
+    @completed.update_all(completed: false, completed_date: nil)
+  end
+
   def index
-    @tasks = Task.all
+    restart
+    @tasks = current_user.tasks.order(:updated_at)
   end
 
   def show

@@ -21,10 +21,43 @@ $ ->
     else
       date = invalid_date()
 
+  wake_modal = ->
+    $('.modal-background').removeClass('hidden')
+
+  sleep_modal = ->
+    $('.modal-background').addClass('hidden')
+
+  change_position = (obj, checked) ->
+    if checked
+      previous_list = '.incomplete'
+      new_list = '.complete'
+    else
+      previous_list = '.complete'
+      new_list = '.incomplete'
+
+    wrapper = $(obj).parent()
+    list_item = $(obj).parent().parent()
+
+    list_item.detach()
+    $(new_list).append(list_item)
+
+    if checked
+      text = document.createTextNode(' (Completed today!)')
+      wrapper.append(text)
+    else
+      $(obj).parent().contents().last().remove()
+
+  # Disappear modal when it's clicked
+  $('.modal-background').on 'click', ->
+    sleep_modal()
+
   # Update completed field for task when it's clicked
   $('.check').on "change", ->
     id = this.value
     completed = this.checked
+    change_position(this, completed)
+    if completed
+      wake_modal()
     url = "/tasks/#{id}.json"
     $.ajax
       type: "PATCH"
