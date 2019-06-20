@@ -66,3 +66,6 @@ gem 'devise', '4.6.2'
 
 # Gem to use jquery on rails
 gem 'jquery-rails', '4.3.5'
+
+# Gem to use font-awesome icons
+gem 'font-awesome-rails', '4.7.0.5'
