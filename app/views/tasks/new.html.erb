@@ -18,21 +18,21 @@
   <% end %>
 
   <p>
-    <%= f.text_field :description, placeholder: 'Title', class: = 'text' %>
+    <%= f.text_field :description, placeholder: 'Title', class: 'text' %>
   </p>
 
     <!-- Campos ocultos para creación de task -->
-    <%= f.hidden_field :completed, :value => false %>
-    <%= f.hidden_field :completed_date, :value => nil %>
+    <%= f.hidden_field :completed, value: false %>
+    <%= f.hidden_field :completed_date, value: nil %>
 
     <!-- Campos ocultos para creación de assignment -->
     <%= f.fields_for :assignments do |a| %>
-      <%= a.hidden_field :ownership, :value => true %>
-      <%= a.hidden_field :user_id, :value => current_user.id %>
+      <%= a.hidden_field :ownership, value: true %>
+      <%= a.hidden_field :user_id, value: current_user.id %>
     <% end %>
 
   <p>
-    <%= f.submit 'Create task', class: = 'btn secondary' %>
+    <%= f.submit 'Create task', class: 'btn secondary' %>
   </p>
 
 <% end %>

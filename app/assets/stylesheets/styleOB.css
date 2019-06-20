@@ -1,8 +1,8 @@
-@import "font-awesome";
+@import 'font-awesome';
 
 @font-face {
-  font-family: "Montserrat";
-  src: url(/assets/Montserrat-Medium.ttf) format("truetype");
+  font-family: 'Montserrat';
+  src: url(/assets/Montserrat/Montserrat-Medium.ttf) format('truetype');
 }
 
 .btn, input[type=submit] {
@@ -99,7 +99,7 @@ h1, h2, p, a, th, td, form {
 
 body {
   background-color: #00ADEE;
-  background-image: url("background.png");
+  background-image: url('background.png');
 }
 
 ul {
