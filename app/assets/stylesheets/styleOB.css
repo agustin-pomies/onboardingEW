@@ -63,11 +63,11 @@
   display: inline-block;
 }
 
-.back-icon {
+.link-icon {
   font-size: 18px;
 }
 
-.delete-icon {
+.delete {
   color: #e11e1e;
   font-size: 18px;
 }
