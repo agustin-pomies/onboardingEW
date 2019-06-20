@@ -1,0 +1,30 @@
+<h3>Task selected:</h3>
+<%= @task.description %>
+
+<h3>Current collaborators:</h3>
+<ul>
+  <% @task.assignments.each do |a| %>
+    <% if !a.ownership %>
+      <li><%= User.find(a.user_id).email %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h3>Users remaining to help you:</h3>
+<ul>
+  <% @users.each do |user| %>
+    <% if user.id != current_user.id %>
+      <li>
+        <%= user.email %>
+        <%= link_to 'Invite to help', tasks_path %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= link_to tasks_path do %>
+  <span class='link-icon'>
+    <% #fa_icon 'arrow-circle-left' %>
+    Back to my monthly-task's list
+  </span>
+<% end %>
