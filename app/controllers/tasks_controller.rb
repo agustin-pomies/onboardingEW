@@ -9,11 +9,13 @@ class TasksController < ApplicationController
   def index
     restart
     @tasks = current_user.tasks.order(:updated_at)
+    @my_tasks = current_user.assignments.where(ownership: true)
   end
 
   def show
     @task = Task.find(params[:id])
-    @users = User.all
+    @collaborators = @task.users
+    @potential_collab = User.where.not(id: @collaborators.pluck(:id))
   end
 
   def new
@@ -22,8 +24,8 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.find(params[:id])
     @users = User.all
+    @task = Task.find(params[:id])
   end
 
   def create

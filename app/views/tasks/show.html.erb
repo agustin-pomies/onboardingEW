@@ -3,20 +3,28 @@
 
 <h3>Current collaborators:</h3>
 <ul>
-  <% @task.assignments.each do |a| %>
-    <% if !a.ownership %>
-      <li><%= User.find(a.user_id).email %></li>
-    <% end %>
+  <% @collaborators.each do |c| %>
+    <li><%= c.email %></li>
   <% end %>
 </ul>
 
 <h3>Users remaining to help you:</h3>
 <ul>
-  <% @users.each do |user| %>
-    <% if user.id != current_user.id %>
+  <% @potential_collab.each do |pc| %>
+    <% if pc.id != current_user.id %>
       <li>
-        <%= user.email %>
-        <%= link_to 'Invite to help', tasks_path %>
+        <%= pc.email %>
+
+        <%= form_for @task do |f| %>
+          <!-- Campos ocultos para creación de assignment -->
+          <%= f.fields_for :assignments do |a| %>
+            <%= a.hidden_field :ownership, :value => false %>
+            <%= a.hidden_field :user_id, :value => pc.id %>
+          <% end %>
+
+          <%= f.submit 'Invite to help' %>
+        <% end %>
+
       </li>
     <% end %>
   <% end %>
