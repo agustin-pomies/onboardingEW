@@ -118,6 +118,10 @@
   margin-left: 12px;
 }
 
+.second {
+  text-align: center;
+}
+
 .link-icon {
   font-size: 18px;
 }
@@ -140,11 +144,10 @@
   display: none;
 }
 
-input[type=text], input[type=email], input[type=password] {
-  border: none;
-  font-size: 16px;
-  margin-bottom: 0px;
-  padding: 8px 20px;
+body {
+  background-color: #00ADEE;
+  background-image: url('background.png');
+  margin: 0px;
 }
 
 h1, h2, p, a, ul, li, th, td, form {
@@ -152,10 +155,15 @@ h1, h2, p, a, ul, li, th, td, form {
   font-family: 'Montserrat', sans-serif;
 }
 
-body {
-  background-color: #00ADEE;
-  background-image: url('background.png');
-  margin: 0px;
+input[type=text], input[type=email], input[type=password] {
+  border: none;
+  font-size: 16px;
+  margin-bottom: 0px;
+  padding: 8px 20px;
+}
+
+th, td {
+  text-align: left;
 }
 
 a {
