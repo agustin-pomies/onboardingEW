@@ -49,10 +49,13 @@ $(document).on 'turbolinks:load', ->
     # Change obj style to match new list
     if checked
       text = document.createTextNode(' (Completed today!)')
-      wrapper.append(text)
-      wake_modal()
+      list_item.append(text)
     else
-      wrapper.contents().last().remove()
+      list_item.contents().last().remove()
+
+  # Disappear modal when it's clicked
+  $('.modal-background').on 'click', ->
+    sleep_modal()
 
   # Update completed field for task when it's clicked
   $('.check').on 'change', ->
