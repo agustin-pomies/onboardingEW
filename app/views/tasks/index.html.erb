@@ -8,7 +8,11 @@
       <li>
         <div class='wrapper' id='<%= task.id %>'>
           <%= task.description %>
+<<<<<<< HEAD
           <%= check_box_tag 'tasks_ids[]', task.id, task.completed, class: 'check' %>
+=======
+          <%= check_box_tag 'tasks_ids[]', task.id, task.completed, :class => 'check' %>
+>>>>>>> Double quotes replaced by single quotes
           <% if task.assignments.exists?(user_id: current_user.id, ownership: true) %>
             <%= link_to '+', task_path(task), method: :get %>
           <% end %>
@@ -30,7 +34,11 @@
       <li>
         <div class='wrapper'>
           <%= task.description %>
+<<<<<<< HEAD
           <%= check_box_tag 'tasks_ids[]', task.id, task.completed, class: 'check' %>
+=======
+          <%= check_box_tag 'tasks_ids[]', task.id, task.completed, :class => 'check' %>
+>>>>>>> Double quotes replaced by single quotes
           <% if task.assignments.exists?(user_id: current_user.id, ownership: true) %>
             <%= link_to '+', task_path(task), method: :get %>
           <% end %>
