@@ -9,7 +9,6 @@ class TasksController < ApplicationController
   def index
     restart
     @tasks = current_user.tasks.order(:updated_at)
-    @my_tasks = current_user.assignments.where(ownership: true)
   end
 
   def show
@@ -40,15 +39,11 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-
-    respond_to do |format|
-      if @task.update(task_params)
-        redirect_to root_path, notice: 'Task completed!'
-      else
-        redirect_to root_path, notice: 'Error'
-      end
+    if @task.update(task_params)
+      redirect_to task_path(@task), notice: 'Task completed!'
+    else
+      redirect_to task_path(@task), notice: 'Error'
     end
-
   end
 
   def destroy
@@ -59,6 +54,7 @@ class TasksController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:description, :completed, :completed_date, assignments_attributes: [:ownership, :user_id])
+      params.require(:task).permit(:description, :completed, :completed_date,
+        assignments_attributes: [:ownership, :user_id])
     end
 end

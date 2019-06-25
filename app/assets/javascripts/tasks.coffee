@@ -1,4 +1,4 @@
-$ ->
+$(document).on 'turbolinks:load', ->
   stringify_date = (date) ->
     dd = date.getDate()
     mm = date.getMonth() + 1
@@ -27,7 +27,12 @@ $ ->
   sleep_modal = ->
     $('.modal-background').addClass('hidden')
 
-  change_position = (obj, checked) ->
+  # Disappear modal when it's clicked
+  $('.modal-background').on 'click', ->
+    sleep_modal()
+
+  change_position_style = (obj, checked) ->
+    # Change the obj location in list
     if checked
       previous_list = '.incomplete'
       new_list = '.complete'
@@ -41,23 +46,19 @@ $ ->
     list_item.detach()
     $(new_list).append(list_item)
 
+    # Change obj style to match new list
     if checked
       text = document.createTextNode(' (Completed today!)')
       wrapper.append(text)
+      wake_modal()
     else
-      $(obj).parent().contents().last().remove()
-
-  # Disappear modal when it's clicked
-  $('.modal-background').on 'click', ->
-    sleep_modal()
+      wrapper.contents().last().remove()
 
   # Update completed field for task when it's clicked
   $('.check').on "change", ->
     id = this.value
     completed = this.checked
-    change_position(this, completed)
-    if completed
-      wake_modal()
+    change_position_style(this, completed)
     url = "/tasks/#{id}.json"
     $.ajax
       type: "PATCH"

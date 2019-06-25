@@ -17,9 +17,9 @@
 
         <%= form_for @task do |f| %>
           <!-- Campos ocultos para creación de assignment -->
-          <%= f.fields_for :assignments do |a| %>
-            <%= a.hidden_field :ownership, :value => false %>
-            <%= a.hidden_field :user_id, :value => pc.id %>
+          <%= f.fields_for :assignments, @task.assignments.build do |a| %>
+            <%= a.hidden_field :ownership, value: false %>
+            <%= a.hidden_field :user_id, value: pc.id %>
           <% end %>
 
           <%= f.submit 'Invite to help' %>
