@@ -1,0 +1,39 @@
+<header class='navbar-header'>
+  <div class='container'>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <ul class='nav navbar-nav'>
+      <li id='home'>
+        <%= link_to tasks_path do %>
+          <span class='link-icon'>
+            <%= fa_icon 'home' %>
+            Home
+          </span>
+        <% end %>
+      </li>
+      <li id='instructions'>
+        <%= link_to instructions_path do %>
+          <span class='link-icon'>
+            <%= fa_icon 'question-circle' %>
+            What can I do?
+          </span>
+        <% end %>
+      </li>
+      <li id='profile'>
+        <%= link_to tasks_path do %>
+          <span class='link-icon'>
+            <%= fa_icon 'user' %>
+            My Profile
+          </span>
+        <% end %>
+      </li>
+      <li id='log-out'>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <span class='link-icon'>
+            <%= fa_icon 'sign-out' %>
+            Log out
+          </span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</header>

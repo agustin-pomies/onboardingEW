@@ -43,9 +43,9 @@ $ ->
 
     if checked
       text = document.createTextNode(' (Completed today!)')
-      wrapper.append(text)
+      list_item.append(text)
     else
-      $(obj).parent().contents().last().remove()
+      list_item.contents().last().remove()
 
   # Disappear modal when it's clicked
   $('.modal-background').on 'click', ->
