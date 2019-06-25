@@ -68,6 +68,7 @@ gem 'devise', '4.6.2'
 gem 'jquery-rails', '4.3.5'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Gem to use font-awesome icons
 gem 'font-awesome-rails', '4.7.0.5'
 =======
@@ -75,3 +76,8 @@ gem 'font-awesome-rails', '4.7.0.5'
 gem 'pry', '0.12.2'
 gem 'pry-nav', '0.3.0'
 >>>>>>> Fixed Turbolinks bad interaction events & duplicated form inviting collaborator
+=======
+# Gem to debug
+gem 'pry', '0.12.2'
+gem 'pry-nav', '0.3.0'
+>>>>>>> cb2fff8a814797d4a032f72af64e4c337454e211
