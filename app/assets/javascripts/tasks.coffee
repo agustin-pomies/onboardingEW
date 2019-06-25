@@ -55,15 +55,15 @@ $(document).on 'turbolinks:load', ->
       wrapper.contents().last().remove()
 
   # Update completed field for task when it's clicked
-  $('.check').on "change", ->
+  $('.check').on 'change', ->
     id = this.value
     completed = this.checked
     change_position_style(this, completed)
-    url = "/tasks/#{id}.json"
+    url = '/tasks/#{id}.json'
     $.ajax
-      type: "PATCH"
+      type: 'PATCH'
       url: url
-      dataType: "json"
+      dataType: 'json'
       data:
         task:
           completed: completed
