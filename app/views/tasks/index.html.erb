@@ -9,6 +9,9 @@
         <div class='wrapper' id='<%= task.id %>'>
           <%= task.description %>
           <%= check_box_tag 'tasks_ids[]', task.id, task.completed, class: 'check' %>
+          <% if task.assignments.exists?(user_id: current_user.id, ownership: true) %>
+            <%= link_to '+', task_path(task), method: :get %>
+          <% end %>
           <%= link_to task_path(task), method: :delete, data: { confirm: 'Are you sure?' } do %>
             <span class='delete'>
               <%= fa_icon 'trash' %>
@@ -28,6 +31,9 @@
         <div class='wrapper'>
           <%= task.description %>
           <%= check_box_tag 'tasks_ids[]', task.id, task.completed, class: 'check' %>
+          <% if task.assignments.exists?(user_id: current_user.id, ownership: true) %>
+            <%= link_to '+', task_path(task), method: :get %>
+          <% end %>
           <%= link_to task_path(task), method: :delete, data: { confirm: 'Are you sure?' } do %>
             <span class='delete'>
               <%= fa_icon 'trash' %>

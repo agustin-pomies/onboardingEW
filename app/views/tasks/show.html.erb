@@ -1,0 +1,38 @@
+<h3>Task selected:</h3>
+<%= @task.description %>
+
+<h3>Current collaborators:</h3>
+<ul>
+  <% @collaborators.each do |c| %>
+    <li><%= c.email %></li>
+  <% end %>
+</ul>
+
+<h3>Users remaining to help you:</h3>
+<ul>
+  <% @potential_collab.each do |pc| %>
+    <% if pc.id != current_user.id %>
+      <li>
+        <%= pc.email %>
+
+        <%= form_for @task do |f| %>
+          <!-- Campos ocultos para creación de assignment -->
+          <%= f.fields_for :assignments, @task.assignments.build do |a| %>
+            <%= a.hidden_field :ownership, value: false %>
+            <%= a.hidden_field :user_id, value: pc.id %>
+          <% end %>
+
+          <%= f.submit 'Invite to help' %>
+        <% end %>
+
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= link_to tasks_path do %>
+  <span class='link-icon'>
+    <% #fa_icon 'arrow-circle-left' %>
+    Back to my monthly-task's list
+  </span>
+<% end %>

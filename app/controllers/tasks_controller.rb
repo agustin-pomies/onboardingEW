@@ -13,6 +13,8 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    @collaborators = @task.users
+    @potential_collab = User.where.not(id: @collaborators.pluck(:id))
   end
 
   def new
@@ -21,8 +23,8 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.find(params[:id])
     @users = User.all
+    @task = Task.find(params[:id])
   end
 
   def create
@@ -37,15 +39,11 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-
-    respond_to do |format|
-      if @task.update(task_params)
-        redirect_to root_path, notice: 'Task completed!'
-      else
-        redirect_to root_path, notice: 'Error'
-      end
+    if @task.update(task_params)
+      redirect_to task_path(@task), notice: 'Task completed!'
+    else
+      redirect_to task_path(@task), notice: 'Error'
     end
-
   end
 
   def destroy
@@ -56,6 +54,7 @@ class TasksController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:description, :completed, :completed_date, assignments_attributes: [:ownership, :user_id])
+      params.require(:task).permit(:description, :completed, :completed_date,
+        assignments_attributes: [:ownership, :user_id])
     end
 end

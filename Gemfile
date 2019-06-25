@@ -69,3 +69,8 @@ gem 'jquery-rails', '4.3.5'
 
 # Gem to use font-awesome icons
 gem 'font-awesome-rails', '4.7.0.5'
+
+# Gem to debug
+gem 'pry', '0.12.2'
+gem 'pry-nav', '0.3.0'
+
