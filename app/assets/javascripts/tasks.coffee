@@ -62,7 +62,7 @@ $(document).on 'turbolinks:load', ->
     id = this.value
     completed = this.checked
     change_position_style(this, completed)
-    url = '/tasks/#{id}.json'
+    url = "/tasks/#{id}.json"
     $.ajax
       type: 'PATCH'
       url: url
