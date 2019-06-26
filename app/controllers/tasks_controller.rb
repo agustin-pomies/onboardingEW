@@ -58,3 +58,7 @@ class TasksController < ApplicationController
         assignments_attributes: [:ownership, :user_id])
     end
 end
+
+def is_owner(task, user)
+  return task.assignments.exists?(user_id: user.id, ownership: true)
+end

@@ -1,6 +1,6 @@
 <%= render 'layouts/navbar' %>
 
-<div class='central'>
+<div class='centered-container'>
   <h1>Organize your monthly tasks</h1>
   <p>Create and control your monthly tasks to never miss one. You can mark the tasks as completed. If you are reaching end of the month and some task is not complete, we will send you a reminder! Each month the task will automatically get back to uncompleted.</p>
 
@@ -12,7 +12,7 @@
           <div class='wrapper' id='<%= task.id %>'>
             <%= task.description %>
             <%= check_box_tag 'tasks_ids[]', task.id, task.completed, class: 'check' %>
-            <% if task.assignments.exists?(user_id: current_user.id, ownership: true) %>
+            <% if is_owner(task, current_user) %>
               <%= link_to '+', task_path(task), method: :get %>
             <% end %>
             <%= link_to task_path(task), method: :delete, data: { confirm: 'Are you sure?' } do %>
@@ -34,7 +34,7 @@
           <div class='wrapper'>
             <%= task.description %>
             <%= check_box_tag 'tasks_ids[]', task.id, task.completed, class: 'check' %>
-            <% if task.assignments.exists?(user_id: current_user.id, ownership: true) %>
+            <% if is_owner(task, current_user) %>
               <%= link_to '+', task_path(task), method: :get %>
             <% end %>
             <%= link_to task_path(task), method: :delete, data: { confirm: 'Are you sure?' } do %>
