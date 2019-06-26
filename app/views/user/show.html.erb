@@ -1,0 +1,32 @@
+<%= render 'layouts/navbar' %>
+
+<div class='centered-container'>
+  <h1>My Profile</h1>
+
+  <table>
+    <tr>
+      <th>Information</th>
+    </tr>
+    <tr>
+      <td>E-mail:</td>
+      <td class='second'><%= @user.email %></td>
+    </tr>
+    <tr>
+      <td>Registred since:</td>
+      <td class='second'><%= (@user.created_at).strftime('%d-%m-%Y') %></td>
+    </tr>
+    <tr>
+      <td>Amount of tasks assigned:</td>
+      <td class='second'><%= @user.tasks.count %></td>
+    </tr>
+  </table>
+  <br>
+
+  <%= link_to tasks_path do %>
+    <span class='link-icon'>
+      <%= fa_icon 'arrow-circle-left' %>
+      Back to my monthly-task's list
+    </span>
+  <% end %>
+</div>
+

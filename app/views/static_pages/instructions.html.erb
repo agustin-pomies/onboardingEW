@@ -1,0 +1,22 @@
+<%= render 'layouts/navbar' %>
+
+<div class='centered-container'>
+  <h1>What can I do in this site?</h1>
+  <p>The page contains many options for you to organise and keep track of each one of your tasks:</p>
+  <ul class='instructions'>
+    <li>Create a new task to keep it saved in a lovely design web page</li>
+    <li>Look how you fill the 'Completed tasks' section in much less time</li>
+    <li>Separate the task that you already complete to focus better on the remaining ones</li>
+    <li>Record your progress and check how long ago you complete certain tasks</li>
+    <li>Delete the to-do's you think don't need anymore and forget completely about them</li>
+    <li>Invite users to check your progress and they will help you reach your goals</li>
+    <li>Automatically, your tasks will restart at the beginning of each for you to complete again!</li>
+  </ul>
+
+  <%= link_to tasks_path do %>
+    <span class='link-icon'>
+      <%= fa_icon 'arrow-circle-left' %>
+      Back to my monthly-task's list
+    </span>
+  <% end %>
+</div>

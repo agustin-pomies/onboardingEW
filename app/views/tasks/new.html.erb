@@ -1,46 +1,49 @@
-<h1>New Task</h1>
-<p>Create a new monthly task and keep track of it.</p>
+<%= render 'layouts/navbar' %>
 
-<%= form_for @task do |f| %>
+<div class='centered-container'>
+  <h1>New Task</h1>
+  <p>Create a new monthly task and keep track of it.</p>
 
-  <% if @task.errors.any? %>
-    <div id='error_explanation'>
-      <h2>
-        <%= pluralize(@task.errors.count, 'error') %> prohibited
-        this task from being saved:
-      </h2>
-      <ul>
-        <% @task.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= form_for @task do |f| %>
 
-  <p>
-    <%= f.text_field :description, placeholder: 'Title', class: 'text' %>
-  </p>
-
-    <!-- Campos ocultos para creación de task -->
-    <%= f.hidden_field :completed, value: false %>
-    <%= f.hidden_field :completed_date, value: nil %>
-
-    <!-- Campos ocultos para creación de assignment -->
-    <%= f.fields_for :assignments do |a| %>
-      <%= a.hidden_field :ownership, value: true %>
-      <%= a.hidden_field :user_id, value: current_user.id %>
+    <% if @task.errors.any? %>
+      <div id='error_explanation'>
+        <h2>
+          <%= pluralize(@task.errors.count, 'error') %> prohibited
+          this task from being saved:
+        </h2>
+        <ul>
+          <% @task.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
 
-  <p>
-    <%= f.submit 'Create task', class: 'btn secondary' %>
-  </p>
+    <p>
+      <%= f.text_field :description, placeholder: 'Title', class: 'text' %>
+    </p>
 
-<% end %>
+      <!-- Campos ocultos para creación de task -->
+      <%= f.hidden_field :completed, value: false %>
+      <%= f.hidden_field :completed_date, value: nil %>
 
-<%= link_to tasks_path do %>
-  <span class='link-icon'>
-    <%= fa_icon 'arrow-circle-left' %>
-    Back to my monthly-task's list
-  </span>
-<% end %>
+      <!-- Campos ocultos para creación de assignment -->
+      <%= f.fields_for :assignments do |a| %>
+        <%= a.hidden_field :ownership, value: true %>
+        <%= a.hidden_field :user_id, value: current_user.id %>
+      <% end %>
 
+    <p>
+      <%= f.submit 'Create task', class: 'btn secondary' %>
+    </p>
+
+  <% end %>
+
+  <%= link_to tasks_path do %>
+    <span class='link-icon'>
+      <%= fa_icon 'arrow-circle-left' %>
+      Back to my monthly-task's list
+    </span>
+  <% end %>
+</div>

@@ -40,7 +40,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      redirect_to task_path(@task), notice: 'Task completed!'
+      redirect_to tasks_path(@task), notice: 'Task completed!'
     else
       redirect_to task_path(@task), notice: 'Error'
     end
@@ -57,4 +57,8 @@ class TasksController < ApplicationController
       params.require(:task).permit(:description, :completed, :completed_date,
         assignments_attributes: [:ownership, :user_id])
     end
+end
+
+def is_owner(task, user)
+  return task.assignments.exists?(user_id: user.id, ownership: true)
 end

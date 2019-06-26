@@ -5,6 +5,40 @@
   src: url(/assets/Montserrat/Montserrat-Medium.ttf) format('truetype');
 }
 
+.navbar-header {
+  background-color: #1981f0d4;
+  overflow: auto;
+}
+
+.navbar-nav {
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+
+.navbar-nav li {
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 15px 13px;
+}
+
+#home:hover {
+  background-color: #104884d4;
+}
+
+#instructions:hover {
+  background-color: #7e8410d4;
+}
+
+#profile:hover {
+  background-color: #108431d4;
+}
+
+#log-out:hover {
+  background-color: #841010d4;
+}
+
 .btn, input[type=submit] {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
@@ -32,7 +66,6 @@
 
 .modal-background {
   background-color: rgba(255, 255, 255, 0.4);
-  display: none;
   height: 100%;
   left: 0;
   position: absolute;
@@ -63,6 +96,32 @@
   padding: 4px 12px;
 }
 
+.tasks-lists {
+  margin-bottom: 30px;
+}
+
+.tasks-lists li {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 10px;
+}
+
+.complete div {
+  text-decoration: line-through;
+}
+
+.instructions li {
+  padding: 10px;
+}
+
+.centered-container {
+  margin-left: 12px;
+}
+
+.second {
+  text-align: center;
+}
+
 .link-icon {
   font-size: 18px;
 }
@@ -85,6 +144,17 @@
   display: none;
 }
 
+body {
+  background-color: #00ADEE;
+  background-image: url('background.png');
+  margin: 0px;
+}
+
+h1, h2, p, a, ul, li, th, td, form {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
 input[type=text], input[type=email], input[type=password] {
   border: none;
   font-size: 16px;
@@ -92,23 +162,8 @@ input[type=text], input[type=email], input[type=password] {
   padding: 8px 20px;
 }
 
-h1, h2, p, a, th, td, form {
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-}
-
-body {
-  background-color: #00ADEE;
-  background-image: url('background.png');
-}
-
-ul {
-  margin-bottom: 30px;
-}
-
-li {
-  color: white;
-  margin-bottom: 10px;
+th, td {
+  text-align: left;
 }
 
 a {
