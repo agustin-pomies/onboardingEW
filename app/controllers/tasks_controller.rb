@@ -40,7 +40,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      redirect_to tasks_path(@task), notice: 'Task completed!'
+      redirect_to task_path(@task), notice: 'Task completed!'
     else
       redirect_to task_path(@task), notice: 'Error'
     end

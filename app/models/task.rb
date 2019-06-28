@@ -5,5 +5,5 @@ class Task < ApplicationRecord
   accepts_nested_attributes_for :assignments
 
   validates :description, presence: true
-  validates :completed, presence: true
+  validates :completed, inclusion: { in: [true, false] }
 end

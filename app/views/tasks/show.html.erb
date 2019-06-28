@@ -12,7 +12,7 @@
 <ul>
   <% @potential_collab.each do |pc| %>
     <% if pc.id != current_user.id %>
-      <li>
+      <li id=<%= pc.id %>>
         <%= pc.email %>
 
         <%= form_for @task do |f| %>
@@ -22,7 +22,7 @@
             <%= a.hidden_field :user_id, value: pc.id %>
           <% end %>
 
-          <%= f.submit 'Invite to help' %>
+          <%= f.submit 'Invite to help', id: pc.id %>
         <% end %>
 
       </li>

@@ -9,13 +9,13 @@
     <% @tasks.each do |task| %>
       <% if !task.completed %>
         <li>
-          <div class='wrapper' id='<%= task.id %>'>
+          <div class='wrapper' id='div-<%= task.id %>'>
             <%= task.description %>
-            <%= check_box_tag 'tasks_ids[]', task.id, task.completed, class: 'check' %>
+            <%= check_box_tag 'check-' + task.id.to_s, task.id, task.completed, class: 'check' %>
             <% if is_owner(task, current_user) %>
               <%= link_to '+', task_path(task), method: :get %>
             <% end %>
-            <%= link_to task_path(task), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= link_to task_path(task), method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete task', id: task.id do %>
               <span class='delete'>
                 <%= fa_icon 'trash' %>
               </span>
@@ -31,9 +31,9 @@
     <% @tasks.each do |task| %>
       <% if task.completed %>
         <li>
-          <div class='wrapper'>
+          <div class='wrapper' id='div-<%= task.id %>'>
             <%= task.description %>
-            <%= check_box_tag 'tasks_ids[]', task.id, task.completed, class: 'check' %>
+            <%= check_box_tag 'check-' + task.id.to_s, task.id, task.completed, class: 'check' %>
             <% if is_owner(task, current_user) %>
               <%= link_to '+', task_path(task), method: :get %>
             <% end %>
